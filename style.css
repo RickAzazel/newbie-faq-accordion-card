@@ -1,26 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
 *, ::before, ::after {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	font-family: 'Kumbh Sans', sans-serif;
 }
 
 :root {
 
-	/* =============== Colors ================ */
+	/** =============== Colors ================ */
+	/* Background */
 	--main-bg-color: linear-gradient(
 		rgb(175, 103, 233),
 		rgb(101, 101, 231)
 	);
 	--faq-card-bg-color: white;
-	--faq-card-shadow-color: rgba(0, 0, 0, .7);
+
+	/* Font */
 	--title-font-color: rgb(29, 30, 53);
-	--item-bottom-line-color: rgb(231, 231, 233);
+	--text-item-font-color: rgb(29, 30, 53);
+	--text-question-font-color: rgb(74, 75, 94);
+
+	/* Border */
+	--text-item-border-color: rgb(231, 231, 233);
 	--question-hover-color: rgb(244, 124, 87);
 	--answer-font-color: rgb(120, 120, 135);
+
+	/* Shadow */
+	--faq-card-shadow-color: rgba(0, 0, 0, .7);
 }
 
 html {
-	font-family: 'Kumbh Sans', sans-serif;
 	font-size: 62.5%;
 }
 
@@ -34,6 +45,7 @@ body {
 	align-items: center;
 	width: 100%;
 	height: 100vh;
+	min-height: 700px;
 	padding: 60px;
 	background: var(--main-bg-color);
 }
@@ -48,7 +60,7 @@ body {
 	box-shadow: 0 40px 90px -20px var(--faq-card-shadow-color);
 }
 
-/* ========================== image ============================== */
+/** ========================== Image ============================== */
 .faq__img {
 	flex: 0 1 50%;
 	min-width: 475px;
@@ -95,7 +107,7 @@ body {
 	z-index: 5;
 }
 
-/* ========================== content ============================== */
+/** ========================== content ============================== */
 .faq__content {
 	flex: 0 1 50%;
 	padding: 80px 95px 40px 0;
@@ -113,7 +125,7 @@ body {
 .text__item {
 	position: relative;
 	padding: 16px 0;
-	border-bottom: 1px solid var(--item-bottom-line-color);
+	border-bottom: 1px solid var(--text-item-border-color);
 	max-height: 50px;
 	overflow: hidden;
 	transition: max-height .5s ease;
@@ -121,14 +133,14 @@ body {
 
 .text__item--active {
 	font-weight: 700;
-	color: rgb(29, 30, 53);
+	color: var(--text-item-font-color);
 	max-height: 200px;
 }
 
 .text__question {
 	display: inline-block;
 	padding-right: 40px;
-	color: rgb(74, 75, 94);
+	color: var(--text-question-font-color);
 }
 
 .text__question:hover {
@@ -148,6 +160,10 @@ body {
 	transition: all .5s ease;
 }
 
+.text__icon:hover {
+	cursor: pointer;
+}
+
 .text__item.text__item--active .text__icon {
 	transform: rotate(180deg);
 }
@@ -161,14 +177,15 @@ body {
 	padding-right: 40px;
 }
 
-/* ========================== Laptops ============================== */
+/** ========================== Media ============================== */
+/* Laptops */
 @media (max-width: 1024px) {
 	html {
 		font-size: 54%;
 	}
 
 	.wrapper {
-		overflow: scroll;
+		overflow: auto;
 		padding-top: 310px;
 	}
 
@@ -207,28 +224,24 @@ body {
 	}
 }
 
-/* ========================== Tablets ============================== */
+/* Tablets */
 @media (max-width: 768px) {
 	.wrapper {
-		overflow: scroll;
-		padding: 250px 60px 50px 60px;
-		align-items:normal;
+		min-height: 800px;
+		padding: 20px;
+		align-items: center;
 	}
 
 	.faq {
+		flex-grow: 0;
 		flex-wrap: nowrap;
 		flex-direction: column;
-		width: 100%;
-		min-height: 830px;
-	}
-
-	.faq__img,
-	.faq__content {
-		flex-basis: 100%;
+		height: 550px;
+		margin-bottom: -100px;
 	}
 
 	.faq__img {
-		flex: 0 1 auto;
+		flex: 0 0 auto;
 		height: 30%;
 		width: 100%;
 	}
@@ -261,7 +274,8 @@ body {
 
 	.faq__content {
 		flex: 1 1 auto;
-		padding: 0 40px;
+		padding: 0 40px 20px 40px;
+		overflow: auto;
 	}
 
 	.title {
@@ -270,18 +284,20 @@ body {
 	}
 }
 
-/* ========================== Mobile ============================== */
+/* Mobile */
 @media (max-width: 480px) {
 	html {
 		font-size: 53%;
 	}
 
 	.wrapper {
-		padding: 190px 20px 50px 20px;
+		min-height: 600px;
 	}
 
 	.faq {
-		min-height: 770px;
+		min-height: auto;
+		height: 450px;
+		margin-bottom: -70px;
 	}
 
 	.faq__img {
@@ -312,7 +328,7 @@ body {
 
 	.faq__content {
 		height: 80%;
-		padding: 0 25px;
+		padding: 20px 25px 0 25px;
 	}
 
 	.title {
@@ -336,15 +352,6 @@ body {
 @media (max-width: 370px) {
 	html {
 		font-size: 47%;
-	}
-
-	.wrapper {
-		padding-top: 140px;
-		padding-bottom: 20px;
-	}
-
-	.faq {
-		min-height: 870px;
 	}
 
 	.faq__img {
